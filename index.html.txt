@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>StrainName.com</title>
+
+  <!-- 💎 Google Font for Glowy Title -->
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@600&display=swap" rel="stylesheet" />
+
+  <!-- 🎨 External Styles -->
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <!-- ☁️ Vapor Haze Overlay -->
+  <div class="vapor"></div>
+
+  <!-- 🍃 Floating Leaves -->
+  <div class="leaf-container">
+    <div class="leaf leaf1">🍃</div>
+    <div class="leaf leaf2">🌿</div>
+    <div class="leaf leaf3">🍁</div>
+  </div>
+
+  <!-- 🌀 Main Content -->
+  <div class="container">
+    <h1>🌀 StrainName.com</h1>
+    <p class="tagline">Born from real strains. Mutated for fun.</p>
+
+    <!-- 🔥 Strain Output -->
+    <div id="strain-box">🧪 <em>Hit the button to spark a new strain...</em></div>
+    <div id="strain-desc" class="strain-desc"><em>Waiting for a name...</em></div>
+
+    <!-- 🌿 Buttons -->
+    <button onclick="generateStrain()">🌿 Generate Strain</button>
+    <button onclick="shareStrain()">🚬 Pass the Blunt</button>
+
+    <!-- 🔊 Audio Player -->
+    <audio id="bg-audio" controls autoplay loop>
+      <source id="audio-source" src="music/8 Sanctuary (Mastered).mp3" type="audio/mpeg" />
+      Your browser does not support the audio element.
+    </audio>
+  </div>
+
+  <!-- ⚙️ JavaScript Logic -->
+  <script src="script.js"></script>
+</body>
+</html>

@@ -1,0 +1,155 @@
+/* 🔮 Animated Gradient Background */
+body {
+  font-family: 'Courier New', monospace;
+  background: linear-gradient(135deg, #1b1b1b, #2e005e, #004d4d);
+  background-size: 300% 300%;
+  animation: gradientShift 15s ease infinite;
+  color: #d6f5d6;
+  text-align: center;
+  padding: 2rem;
+  margin: 0;
+  overflow-x: hidden;
+}
+
+@keyframes gradientShift {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+/* 📦 Container */
+.container {
+  max-width: 90%;
+  margin: 0 auto;
+}
+
+@media (min-width: 600px) {
+  .container {
+    max-width: 600px;
+  }
+}
+
+/* 🌠 Glowy Title */
+h1 {
+  font-family: 'Orbitron', sans-serif;
+  font-size: 2.5rem;
+  color: #00ffcc;
+  margin-bottom: 1rem;
+  text-shadow: 0 0 5px #00ffcc88, 0 0 15px #00ffcc44;
+}
+
+/* 🧪 Strain Box with Pulse */
+#strain-box {
+  margin: 2rem auto 0.5rem auto;
+  font-size: 2rem;
+  background: rgba(0, 0, 0, 0.6);
+  padding: 1.2rem;
+  border-radius: 8px;
+  min-height: 80px;
+  animation: pulse 3s ease-in-out infinite;
+  color: #ffffff;
+  box-shadow: 0 0 12px #222;
+}
+
+@keyframes pulse {
+  0% { transform: scale(1); }
+  50% { transform: scale(1.015); }
+  100% { transform: scale(1); }
+}
+
+/* 💬 Description Styling */
+.strain-desc {
+  margin-top: 0.5rem;
+  font-style: italic;
+  color: #cccccc;
+  font-size: 1rem;
+  max-width: 90%;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+/* 🧘 Tagline */
+.tagline {
+  font-size: 1rem;
+  margin-bottom: 1rem;
+  color: #aaffee;
+  opacity: 0.85;
+  font-style: italic;
+}
+
+/* 🎛️ Buttons */
+button {
+  margin: 1rem;
+  padding: 1rem 2rem;
+  background: rgba(255, 255, 255, 0.08);
+  color: #00ffcc;
+  border: 1px solid #00ffcc;
+  border-radius: 12px;
+  cursor: pointer;
+  font-size: 1.2rem;
+  backdrop-filter: blur(4px);
+  transition: all 0.3s ease;
+  box-shadow: 0 0 8px #00ffcc22;
+}
+
+button:hover {
+  background: #00ffcc;
+  color: #000;
+  box-shadow: 0 0 10px #00ffcc;
+}
+
+/* 🔊 Audio Player */
+audio {
+  margin-top: 2rem;
+  width: 100%;
+  max-width: 300px;
+  filter: drop-shadow(0 0 10px #00ffcc);
+  border-radius: 8px;
+}
+
+/* ☁️ Vapor Haze */
+.vapor {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: url('https://www.transparenttextures.com/patterns/cloudy-day.png');
+  opacity: 0.05;
+  z-index: -2;
+  animation: drift 60s linear infinite;
+}
+
+@keyframes drift {
+  0% { background-position: 0 0; }
+  100% { background-position: 1000px 1000px; }
+}
+
+/* 🍃 Floating Leaves */
+.leaf-container {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  overflow: hidden;
+  z-index: -1;
+}
+
+.leaf {
+  position: absolute;
+  font-size: 2rem;
+  opacity: 0.3;
+  animation: float 15s linear infinite;
+}
+
+.leaf1 { left: 20%; animation-delay: 0s; }
+.leaf2 { left: 50%; animation-delay: 5s; }
+.leaf3 { left: 80%; animation-delay: 10s; }
+
+@keyframes float {
+  0% { top: -10%; transform: rotate(0deg); }
+  50% { transform: rotate(180deg); }
+  100% { top: 110%; transform: rotate(360deg); }
+}
