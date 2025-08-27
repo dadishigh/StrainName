@@ -2,47 +2,101 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>StrainName.com</title>
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="description" content="Generate hilarious, trippy cannabis strain names based on real genetics. Vibe with [dadishigh] while you cultivate the weirdest weed names imaginable." />
 
-  <!-- 💎 Google Font for Glowy Title -->
+  <title>Strain Name</title>
+
+  <!-- Favicon -->
+  <link rel="icon" type="image/x-icon" href="favicon.ico" />
+
+  <!-- Fonts -->
   <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@600&display=swap" rel="stylesheet" />
 
-  <!-- 🎨 External Styles -->
+  <!-- Styles -->
   <link rel="stylesheet" href="style.css" />
 </head>
-<body>
-  <!-- ☁️ Vapor Haze Overlay -->
-  <div class="vapor"></div>
+<body class="greenhouse">
+  <!-- 🌫 Vapor Background (local asset referenced in CSS) -->
+  <div class="vapor" aria-hidden="true"></div>
 
   <!-- 🍃 Floating Leaves -->
-  <div class="leaf-container">
+  <div class="leaf-container" aria-hidden="true">
     <div class="leaf leaf1">🍃</div>
-    <div class="leaf leaf2">🌿</div>
-    <div class="leaf leaf3">🍁</div>
+    <div class="leaf leaf2">🍁</div>
+    <div class="leaf leaf3">🍃</div>
   </div>
 
-  <!-- 🌀 Main Content -->
-  <div class="container">
-    <h1>🌀 StrainName.com</h1>
+  <!-- Main App -->
+  <main class="container" role="main">
+    <!-- Header -->
+    <h1>
+      <img class="icon-inline" src="assets/fanleaf.png" alt="" aria-hidden="true" />
+      Strain Name
+      <img class="icon-inline" src="assets/fanleaf.png" alt="" aria-hidden="true" />
+    </h1>
+
     <p class="tagline">Born from real strains. Mutated for fun.</p>
 
-    <!-- 🔥 Strain Output -->
-    <div id="strain-box">🧪 <em>Hit the button to spark a new strain...</em></div>
-    <div id="strain-desc" class="strain-desc"><em>Waiting for a name...</em></div>
+    <!-- Strain Output -->
+    <div id="strain-box" aria-live="polite">
+      <span class="fire-icon">🔥</span>
+      <span id="strain-name">Hit “Cultivate” to generate a name…</span>
+      <span class="fire-icon">🔥</span>
+    </div>
 
-    <!-- 🌿 Buttons -->
-    <button onclick="generateStrain()">🌿 Generate Strain</button>
-    <button onclick="shareStrain()">🚬 Pass the Blunt</button>
+    <p id="strain-description" class="strain-desc">
+      Your auto-generated fake strain description will appear here.
+    </p>
 
-    <!-- 🔊 Audio Player -->
-    <audio id="bg-audio" controls autoplay loop>
-      <source id="audio-source" src="music/8 Sanctuary (Mastered).mp3" type="audio/mpeg" />
-      Your browser does not support the audio element.
-    </audio>
-  </div>
+    <img id="strain-seeds" src="assets/seeds.png" alt="" aria-hidden="true" />
 
-  <!-- ⚙️ JavaScript Logic -->
+    <!-- Actions -->
+    <div class="actions">
+      <button id="generate-btn" type="button" onclick="generateStrain()">
+        <img class="icon-inline" src="assets/fanleaf.png" alt="" aria-hidden="true" />
+        Cultivate
+      </button>
+
+      <button id="share-btn" type="button" onclick="shareStrain()">
+        <img class="icon-inline" src="assets/blunt.png" alt="" aria-hidden="true" />
+        Pass the Blunt
+      </button>
+    </div>
+
+    <!-- Rating UI hook (script.js renders 🍃 here) -->
+    <div id="rating" aria-label="strain rating"></div>
+
+    <!-- History -->
+    <section class="history-box" aria-labelledby="history-title">
+      <h3 id="history-title">Previously Cultivated</h3>
+      <ul id="history-list"></ul>
+    </section>
+
+    <!-- Spotify (dadishigh) -->
+    <div class="spotify-wrapper" aria-label="Music from [dadishigh]">
+      <!-- Replace src with your exact artist/playlist embed if desired -->
+      <iframe
+        style="border-radius:12px"
+        src="https://open.spotify.com/embed/artist/0kZq1O1f3qVXXXXXXXX?utm_source=generator&theme=0"
+        width="100%" height="152" frameborder="0"
+        allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"
+        loading="lazy">
+      </iframe>
+    </div>
+
+    <!-- Easter Egg / Messages -->
+    <div id="easter-egg-message" class="easter-egg-message" aria-live="polite"></div>
+
+    <!-- Now-playing overlay hook -->
+    <div id="now-playing" aria-live="polite"></div>
+  </main>
+
+  <!-- Toast (global, hidden by default) -->
+  <div id="toast" class="toast" role="status" aria-live="polite"></div>
+
+  <!-- Scripts -->
   <script src="script.js"></script>
 </body>
 </html>
