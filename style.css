@@ -1,137 +1,72 @@
-/* 🔮 Animated Gradient Background */
+/* =========================================================
+   StrainName.com — style.css
+   - Local vapor texture (assets/cloudy-day.png)
+   - Accessible contrast + responsive sizing
+   - Reduced-motion safe
+   - UI hooks for script.js (toasts, now-playing, ratings)
+   - Theme variants (greenhouse / afterhours / psychedelic)
+   ========================================================= */
+
+/* -------- Root + Resets -------- */
+:root {
+  --bg1: #0f3c0f;
+  --bg2: #1c5f1c;
+  --bg3: #0f3c0f;
+  --text: #d6f5d6;
+  --text-soft: #cfeacc;
+  --text-strong: #e7ffe9;
+  --accent: #44ff44;
+  --accent-soft: #2fff2f;
+  --card: rgba(0,0,0,.35);
+  --glass: rgba(255,255,255,.08);
+  --shadow: 0 0 12px #0008;
+}
+
+*, *::before, *::after { box-sizing: border-box; }
+html, body { height: 100%; }
+
+/* -------- Body / Stage -------- */
 body {
   font-family: 'Courier New', monospace;
-  background: linear-gradient(135deg, #1b1b1b, #2e005e, #004d4d);
+  color: var(--text);
+  text-align: center;
+  margin: 0;
+  padding: 2rem;
+  overflow-x: hidden;
+
+  /* Animated gradient canvas */
+  background: linear-gradient(135deg, var(--bg1), var(--bg2), var(--bg3));
   background-size: 300% 300%;
   animation: gradientShift 15s ease infinite;
-  color: #d6f5d6;
-  text-align: center;
-  padding: 2rem;
-  margin: 0;
-  overflow-x: hidden;
 }
 
-@keyframes gradientShift {
-  0% { background-position: 0% 50%; }
-  50% { background-position: 100% 50%; }
-  100% { background-position: 0% 50%; }
-}
-
-/* 📦 Container */
+/* Main container */
 .container {
-  max-width: 90%;
+  max-width: 900px;
   margin: 0 auto;
-}
-
-@media (min-width: 600px) {
-  .container {
-    max-width: 600px;
-  }
-}
-
-/* 🌠 Glowy Title */
-h1 {
-  font-family: 'Orbitron', sans-serif;
-  font-size: 2.5rem;
-  color: #00ffcc;
-  margin-bottom: 1rem;
-  text-shadow: 0 0 5px #00ffcc88, 0 0 15px #00ffcc44;
-}
-
-/* 🧪 Strain Box with Pulse */
-#strain-box {
-  margin: 2rem auto 0.5rem auto;
-  font-size: 2rem;
-  background: rgba(0, 0, 0, 0.6);
-  padding: 1.2rem;
-  border-radius: 8px;
-  min-height: 80px;
-  animation: pulse 3s ease-in-out infinite;
-  color: #ffffff;
-  box-shadow: 0 0 12px #222;
-}
-
-@keyframes pulse {
-  0% { transform: scale(1); }
-  50% { transform: scale(1.015); }
-  100% { transform: scale(1); }
-}
-
-/* 💬 Description Styling */
-.strain-desc {
-  margin-top: 0.5rem;
-  font-style: italic;
-  color: #cccccc;
-  font-size: 1rem;
-  max-width: 90%;
-  margin-left: auto;
-  margin-right: auto;
-}
-
-/* 🧘 Tagline */
-.tagline {
-  font-size: 1rem;
-  margin-bottom: 1rem;
-  color: #aaffee;
-  opacity: 0.85;
-  font-style: italic;
-}
-
-/* 🎛️ Buttons */
-button {
-  margin: 1rem;
-  padding: 1rem 2rem;
-  background: rgba(255, 255, 255, 0.08);
-  color: #00ffcc;
-  border: 1px solid #00ffcc;
-  border-radius: 12px;
-  cursor: pointer;
-  font-size: 1.2rem;
+  padding: 1rem 1.25rem 2rem;
+  background: rgba(0,0,0,.18);
+  border: 1px solid rgba(68,255,68,.18);
+  border-radius: 16px;
+  box-shadow: 0 10px 30px #0005, inset 0 0 24px #0003;
   backdrop-filter: blur(4px);
-  transition: all 0.3s ease;
-  box-shadow: 0 0 8px #00ffcc22;
 }
 
-button:hover {
-  background: #00ffcc;
-  color: #000;
-  box-shadow: 0 0 10px #00ffcc;
-}
-
-/* 🔊 Audio Player */
-audio {
-  margin-top: 2rem;
-  width: 100%;
-  max-width: 300px;
-  filter: drop-shadow(0 0 10px #00ffcc);
-  border-radius: 8px;
-}
-
-/* ☁️ Vapor Haze */
+/* -------- Background FX -------- */
+/* Vapor haze (local asset) */
 .vapor {
   position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background: url('https://www.transparenttextures.com/patterns/cloudy-day.png');
+  inset: 0;
+  background: url('assets/cloudy-day.png');
   opacity: 0.05;
   z-index: -2;
   animation: drift 60s linear infinite;
 }
 
-@keyframes drift {
-  0% { background-position: 0 0; }
-  100% { background-position: 1000px 1000px; }
-}
-
-/* 🍃 Floating Leaves */
+/* Floating leaves layer */
 .leaf-container {
   position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
+  inset: 0;
   pointer-events: none;
   overflow: hidden;
   z-index: -1;
@@ -140,16 +75,231 @@ audio {
 .leaf {
   position: absolute;
   font-size: 2rem;
-  opacity: 0.3;
-  animation: float 15s linear infinite;
+  opacity: 0.2;
+  animation: float 24s linear infinite;
+}
+.leaf1 { left: 20%; animation-delay: 0s; }
+.leaf2 { left: 50%; animation-delay: 6s; }
+.leaf3 { left: 80%; animation-delay: 12s; }
+
+/* -------- Typography / Hero -------- */
+h1 {
+  font-family: 'Orbitron', sans-serif;
+  font-size: clamp(2.2rem, 4.5vw, 3.2rem);
+  color: #6fff6f;
+  margin: 0 0 0.75rem;
+  text-shadow: 0 0 8px #4aff4a, 0 0 20px #00ff00aa;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 1rem;
+  animation: pulse 5s ease-in-out infinite;
 }
 
-.leaf1 { left: 20%; animation-delay: 0s; }
-.leaf2 { left: 50%; animation-delay: 5s; }
-.leaf3 { left: 80%; animation-delay: 10s; }
+.icon-inline {
+  height: 2.2rem;
+  vertical-align: middle;
+  filter: drop-shadow(0 0 4px var(--accent-soft));
+}
 
+/* Tagline */
+.tagline {
+  margin: 0 auto 1rem;
+  color: var(--text-soft);
+  font-style: italic;
+  max-width: 38ch;
+}
+
+/* -------- Strain Output -------- */
+#strain-box {
+  margin: 1.5rem auto 0.5rem;
+  font-size: clamp(1.25rem, 3.5vw, 2rem);
+  background: rgba(0, 0, 0, 0.5);
+  padding: 1rem 1.25rem;
+  border-radius: 10px;
+  min-height: 60px;
+  animation: pulse 3s ease-in-out infinite;
+  color: #fff;
+  box-shadow: 0 0 12px #222;
+  display: inline-flex;
+  align-items: center;
+  gap: .75rem;
+}
+
+.fire-icon { filter: drop-shadow(0 0 6px #f80); }
+
+.strain-desc {
+  font-size: 1rem;
+  font-style: italic;
+  color: #cccccc;
+  margin-top: 0.5rem;
+  max-width: 90%;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+#strain-seeds {
+  width: 36px;
+  margin-top: 0.5rem;
+  animation: pulse 4s infinite;
+}
+
+/* -------- Buttons -------- */
+button {
+  margin: 1rem .5rem;
+  padding: 1rem 2rem;
+  min-height: 48px;                    /* touch target */
+  background: var(--glass);
+  color: #aaffaa;
+  border: 1px solid var(--accent);
+  border-radius: 12px;
+  cursor: pointer;
+  font-size: 1.1rem;
+  backdrop-filter: blur(4px);
+  transition: transform .08s ease, box-shadow .3s ease, background .3s ease, color .3s ease;
+  box-shadow: 0 0 8px #00ffcc22;
+}
+button:hover {
+  background: #00ffcc;
+  color: #000;
+  box-shadow: 0 0 12px #00ffcc, 0 8px 24px #00ffcc33;
+}
+button:active { transform: translateY(1px) scale(.99); }
+
+/* -------- History -------- */
+.history-box {
+  background-color: var(--card);
+  color: #ffb;
+  padding: 1rem;
+  margin-top: 1.5rem;
+  border-radius: 10px;
+  box-shadow: 0 0 5px #00000077;
+  text-align: left;
+}
+.history-box h3 {
+  font-size: 1.1rem;
+  margin: 0 0 .5rem;
+}
+.history-box ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  font-size: 0.95rem;
+  max-height: 180px;
+  overflow-y: auto;
+}
+.history-box li { margin: .25rem 0; }
+
+/* -------- Spotify embed wrapper -------- */
+.spotify-wrapper {
+  margin-top: 1.25rem;
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 12px 30px #0006;
+}
+
+/* -------- Easter Egg message -------- */
+.easter-egg-message {
+  margin-top: 1rem;
+  font-weight: bold;
+  color: var(--text-strong);
+  text-shadow: 0 0 10px #3f3;
+}
+
+/* -------- JS Feature Hooks -------- */
+/* Toasts */
+.toast {
+  position: fixed;
+  bottom: 1rem;
+  left: 50%;
+  transform: translateX(-50%) translateY(12px);
+  background: rgba(0,0,0,.70);
+  color: #eaffea;
+  padding: .6rem .9rem;
+  border-radius: 10px;
+  opacity: 0;
+  transition: opacity .25s, transform .25s;
+  z-index: 9999;
+  border: 1px solid rgba(68,255,68,.3);
+  box-shadow: 0 10px 24px #0007;
+}
+.toast.visible { opacity: 1; transform: translateX(-50%) translateY(0); }
+
+/* 420 glow */
+.glow420 { box-shadow: inset 0 0 40vmax #00ff5a22; }
+
+/* Now-playing overlay */
+#now-playing {
+  position: fixed;
+  top: 1rem;
+  right: 1rem;
+  background: rgba(0,0,0,.5);
+  padding: .5rem .75rem;
+  border-radius: 10px;
+  font-size: .95rem;
+  opacity: 0;
+  transition: opacity .3s;
+  border: 1px solid rgba(68,255,68,.25);
+  box-shadow: 0 8px 20px #0005;
+}
+.show-now-playing { opacity: 1; }
+
+/* Rating UI */
+#rating {
+  display: flex;
+  gap: .35rem;
+  justify-content: center;
+  margin-top: .5rem;
+}
+.leaf-rating {
+  cursor: pointer;
+  font-size: 1.25rem;
+  filter: drop-shadow(0 0 3px #2fff2f60);
+  transition: transform .1s ease;
+}
+.leaf-rating:hover { transform: scale(1.1); }
+
+/* -------- Themes (toggled by script.js) -------- */
+body.greenhouse {
+  --bg1: #0f3c0f; --bg2: #1c5f1c; --bg3: #0f3c0f;
+}
+body.afterhours {
+  --bg1: #0b0f3a; --bg2: #1b1f5e; --bg3: #0b0f3a;
+}
+body.psychedelic {
+  --bg1: #0a2a4a; --bg2: #4a0a4a; --bg3: #0a4a2a;
+}
+
+/* -------- Animations -------- */
+@keyframes gradientShift {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+@keyframes drift {
+  0% { background-position: 0 0; }
+  100% { background-position: 1000px 1000px; }
+}
 @keyframes float {
   0% { top: -10%; transform: rotate(0deg); }
   50% { transform: rotate(180deg); }
   100% { top: 110%; transform: rotate(360deg); }
+}
+@keyframes pulse {
+  0% { transform: scale(1); }
+  50% { transform: scale(1.01); }
+  100% { transform: scale(1); }
+}
+
+/* -------- A11y / Reduced Motion -------- */
+@media (prefers-reduced-motion: reduce) {
+  * { animation: none !important; transition: none !important; }
+}
+
+/* -------- Small screens -------- */
+@media (max-width: 480px) {
+  body { padding: 1.25rem; }
+  .container { padding: .75rem 1rem 1.25rem; }
+  .icon-inline { height: 2rem; }
+  button { width: 100%; max-width: 460px; }
 }
